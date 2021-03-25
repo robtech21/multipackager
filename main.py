@@ -12,16 +12,32 @@ green   = 'green'
 red     = 'red'
 yellow  = 'yellow'
 
+def pip_menu():
+  '''Pip Menu'''
+  pnt('Pip Menu')
+  while True:
+    cmd1 = inpt('pip> ')
+    
+    if cmd1 == 'install':
+      pkg = inpt('pkg> ')
+
 def dnf_menu():
+  '''DNF Menu'''
   pnt('DNF Menu')
   while True:
     cmd1 = inpt('dnf> ')
+    
     if cmd1 == 'break':
       break
+      
+    if cmd1 == 'blank':
+      args = inpt('Type the args for your dnf command:\nargs> ')
+      system('dnf install '+str(args))
+      
     if cmd1 == 'install':
       pkg = inpt('Package?\nsel> ')
-      if pkg != '':
-        system('dnf install '+str(pkg))
+      system('dnf install '+str(pkg))
+        
     if cmd1 == 'update':
       system('dnf update')
 
@@ -47,7 +63,9 @@ elif sys.argv == '-I' or '--interactive':
     cmd = inpt('multipkg> ')
     if cmd == 'exit':
       exit(0)
+     
     if cmd == 'dnf':
       dnf_menu()
+
 else:
   pnt(color('Invalid args',red))
