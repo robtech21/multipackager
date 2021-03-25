@@ -12,13 +12,27 @@ green   = 'green'
 red     = 'red'
 yellow  = 'yellow'
 
+def dnf_menu():
+  pnt('DNF Menu')
+  while True:
+    cmd1 = inpt('dnf> ')
+    if cmd1 == 'break':
+      break
+    if cmd1 == 'install':
+      pkg = inpt('Package?\nsel> ')
+      if pkg != '':
+        system('dnf install '+str(pkg))
+    if cmd1 == 'update':
+      system('dnf update')
+
 def ph():
   '''Shows a placeholder message'''
   pnt('Placeholder')
 
-pnt('Multpackager\nMade by Robert Furr\2021\Untested WIP version')
+pnt('Multpackager\nUntested WIP version\nMade by Robert Furr\n2021')
   
 if os.name == 'nt':
+  # Rejects all Windows users :)
   pnt(color('Sorry, multipackager has no Windows support.',red))
   sys.exit(1)
 
@@ -27,8 +41,13 @@ if sys.argv == '-i' or '--install':
 elif sys.argv == '-I' or '--interactive':
   pnt('''Welcome to the interactive multipackager CLI
   Still a WIP
+  Type 'help' for help
   ''')
   while True:
-    cmd = inpt('> ')
+    cmd = inpt('multipkg> ')
     if cmd == 'exit':
       exit(0)
+    if cmd == 'dnf':
+      dnf_menu()
+else:
+  pnt(color('Invalid args',red))
