@@ -52,9 +52,9 @@ if os.name == 'nt':
   pnt(color('Sorry, multipackager has no Windows support.',red))
   sys.exit(1)
 
-if sys.argv == '-i' or '--install':
+if sys.argv[1] == '-i' or '--install':
   ph()
-elif sys.argv == '-I' or '--interactive':
+elif sys.argv[1] == '-I' or '--interactive':
   pnt('''Welcome to the interactive multipackager CLI
   Still a WIP
   Type 'help' for help
