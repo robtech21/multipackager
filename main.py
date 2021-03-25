@@ -7,7 +7,7 @@ from os import system
 
 color   = colored
 pnt     = print
-inpt    = inpt
+inpt    = input
 green   = 'green'
 red     = 'red'
 yellow  = 'yellow'
